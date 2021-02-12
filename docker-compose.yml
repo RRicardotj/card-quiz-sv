@@ -1,0 +1,28 @@
+version: "3.4"
+
+services:
+  db:
+    image: postgres:12.5-alpine
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+  api:
+    build:
+      context: ./quiz.backend
+      target: dev
+    command: npm run start:dev
+    ports: 
+      - "8000:8000"
+    volumes:
+      - ./quiz.backend:/node/app
+      - /node/app/node_modules
+    depends_on:
+      - db
+    environment:
+      DB_PASS: ${DB_PASS}
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
