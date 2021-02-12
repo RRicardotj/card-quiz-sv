@@ -1,0 +1,6 @@
+.player-area {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(50px, 70px));
+  grid-gap: 16px;
+}
