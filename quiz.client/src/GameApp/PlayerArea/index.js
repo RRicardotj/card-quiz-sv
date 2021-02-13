@@ -17,7 +17,7 @@ const PlayerArea = ({ cards, removeCard }) => {
             return <EmptyCard key={`empty-card${index}`} />
           }
 
-          return <Card imageSrc={card.url} onClick={() => removeCard(card.id)} />
+          return <Card key={card.id} imageSrc={card.url} onClick={() => removeCard(card.id)} />
         })
       }
     </div>
