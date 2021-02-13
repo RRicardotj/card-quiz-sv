@@ -9,6 +9,7 @@ services:
       POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
+
   api:
     build:
       context: ./quiz.backend
@@ -26,3 +27,15 @@ services:
       DB_USER: ${DB_USER}
       DB_NAME: ${DB_NAME}
       DB_HOST: ${DB_HOST}
+
+  client:
+    build: './quiz.client'
+    ports:
+      - "3000:3000"
+    volumes:
+      - "/app/node_modules"
+      - "./quiz.client:/app"
+    depends_on:
+      - api
+      - db
+

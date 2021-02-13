@@ -4,7 +4,7 @@ import './Card.scss';
 
 const EmptyCard = () => {
   return (
-    <div className='card card--empty' type='button'  />
+    <div className='card card--empty'  />
   );
 };
 
